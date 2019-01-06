@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+
+	 <div class="row banner catalog">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>New catalog Item</h1>
+		</div>
+	 </div>
+	 <div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<h2>Name:</h2>
+					<input type ="text" maxlength="50" class="form-control" name="name"placeholder="Name "required>
+
+					<h2>Description:</h2>
+					<textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description "required></textarea>
+
+					<h2>Rating:</h2>>
+					<div class="input-group">
+						<div class="input-group-addon"></div>
+						<input type ="text" class="form-control" maxlength="10" name="rating" placeholder="rating"required>
+                    </div>
+					<h2>Seasons</h2>
+                    <div class="input-group">
+						<div class="input-group-addon"></div>
+						<input type ="text" class="form-control" maxlength="20" name="seasons" placeholder="seasons"required>
+                    </div>
+                    <button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-check" aria-hidden="true"></span>Create</button>
+                </div>
+
+            </form>
+        </div>
+	 </div>
+	</div>
+
+{% endblock %}

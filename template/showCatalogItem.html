@@ -1,0 +1,63 @@
+
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner catalog">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ series.name }}
+			   <figure class="creator">
+				  <img src="{{creator.picture}}">
+				 <figcaption>{{creator.name}}</figcaption>
+				   </figure>
+			</h1>
+
+		</div>
+	</div>
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<a href="{{url_for('newCatalogItem', series_id = series.id )}}">
+				<button class="btn btn-default" id="new-catalog-item">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Add CatalogItem
+				</button>
+		</div>
+	</div>
+	
+	{% if items !=[] %}	
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<h2>Series</h2>
+					{% for i in items %}
+							<div class="catalog-item">
+								<h3>{{i.name}}</h3>
+								<p>{{i.description}}</p>
+								<p>{{i.rating}}</p>
+								<p>{{i.seasons}}</p>
+								<a href='{{url_for('editCatalogItem', series_id = series.id, catalog_id=i.id ) }}'>Edit</a> |
+							<a href='{{url_for('deleteCatalogItem', series_id = series.id, catalog_id=i.id ) }}'>Delete</a>
+							</div>
+					{% endfor %}
+			</div>
+
+			<div class="col-md-1"></div>
+		</div>
+	{% endif %}
+{% endblock %}
